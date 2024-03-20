@@ -61,4 +61,8 @@ require('lazy').setup({
             vim.o.timeoutlen = 300
         end,
     },
+    {
+        'stevearc/conform.nvim',
+        opts = {},
+    }
 })
