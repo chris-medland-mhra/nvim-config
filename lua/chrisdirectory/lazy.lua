@@ -38,10 +38,13 @@ require("lazy").setup({
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = { "kevinhwang91/promise-async" },
+	},
+	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v3.x",
 		dependencies = {
-			--- Uncomment these if you want to manage LSP servers from neovim
 			{ "williamboman/mason.nvim" },
 			{ "williamboman/mason-lspconfig.nvim" },
 
@@ -61,6 +64,7 @@ require("lazy").setup({
 			vim.o.timeoutlen = 300
 		end,
 	},
+	{ "echasnovski/mini.nvim", version = false },
 	{
 		"stevearc/conform.nvim",
 		opts = {},
