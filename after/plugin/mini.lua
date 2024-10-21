@@ -20,5 +20,12 @@ require("mini.bracketed").setup({
 	yank = { suffix = "y", options = {} },
 })
 require("mini.pairs").setup()
-require("mini.move").setup()
+require("mini.move").setup({
+	mappings = {
+		left = "<C-h>",
+		right = "<C-l>",
+		down = "<C-j>",
+		up = "<C-k>",
+	},
+})
 require("mini.comment").setup()

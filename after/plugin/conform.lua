@@ -6,6 +6,7 @@ require("conform").setup({
 		typescript = { "prettierd" },
 		typescriptreact = { "prettierd" },
 		json = { "prettierd" },
+		sql = { "sql_formatter" },
 	},
 	format_on_save = {
 		timeout_ms = 500,
