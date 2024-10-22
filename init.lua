@@ -1,1 +1,2 @@
-require("chrisdirectory")
+require("config.lazy")
+require("config.set")
