@@ -59,13 +59,13 @@ return {
 			lsp_defaults.capabilities =
 				vim.tbl_deep_extend("force", lsp_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
 
-			vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
 			-- LspAttach is where you enable features that only work
 			-- if there is a language server active in the file
 			vim.api.nvim_create_autocmd("LspAttach", {
 				desc = "LSP actions",
 				callback = function(event)
 					local opts = { buffer = event.buf }
+					local client = vim.lsp.get_client_by_id(event.data.client_id)
 
 					vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", opts)
 					vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
@@ -77,6 +77,18 @@ return {
 					vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
 					vim.keymap.set({ "n", "x" }, "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", opts)
 					vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+
+					if client.server_capabilities.inlayHintProvider then
+						vim.lsp.inlay_hint.enable(true, { bufnr = buffer })
+					end
+
+					if vim.lsp.codelens then
+						vim.lsp.codelens.refresh()
+						vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+							buffer = buffer,
+							callback = vim.lsp.codelens.refresh,
+						})
+					end
 				end,
 			})
 
