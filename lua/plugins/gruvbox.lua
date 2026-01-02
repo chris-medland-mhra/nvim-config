@@ -21,8 +21,10 @@ return {
 			invert_tabline = false,
 			invert_intend_guides = false,
 			inverse = true, -- invert background for search, diffs, statuslines and errors
-			contrast = "soft", -- can be "hard", "soft" or empty string
-			palette_overrides = {},
+			contrast = "", -- can be "hard", "soft" or empty string
+			palette_overrides = {
+                ["@lsp.type.keyword.go"] = { bg = "#fb4833ff"}
+            },
 			overrides = {},
 			dim_inactive = false,
 			transparent_mode = false,

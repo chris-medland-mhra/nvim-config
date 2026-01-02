@@ -19,6 +19,9 @@ return {
 					"typescript",
 					"dockerfile",
 					"diff",
+                    "go",
+                    "zig",
+                    "templ"
 				},
 				sync_install = false,
 				highlight = { enable = true },
